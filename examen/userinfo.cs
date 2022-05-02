@@ -9,7 +9,7 @@ namespace examen
     class userinfo
     {
 
-        public static String CustomerName = "";
-        public static String CustomerEmail = "";
+        public static String CustomerName = "admin";
+        public static String CustomerEmail = "alex931d@edu.campusvejle.dk";
     }
 }

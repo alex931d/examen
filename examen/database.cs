@@ -13,6 +13,9 @@ namespace examen
 
         private string connectionString = "Data Source=CV-BB-5995;Initial Catalog=bogdatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+        SqlConnection con;
+        SqlCommand cmd;
+        SqlDataReader reader;
 
         public DataSet Execute(string query)
 
@@ -36,28 +39,35 @@ namespace examen
             }
         }
 
-      /*  public Enemy unit(int received)
-        {
-            Enemy enemy = new Enemy();
-            string enemyQuery = $"SELECT * FROM Enemies WHERE enemyid = {received}";
-            DataSet resultSet = Execute(enemyQuery);
+ 
+ 
 
-            // Get the first table of the data set, and save in variable:
-            DataTable EnemiesTable = resultSet.Tables[0];
-            foreach (DataRow Enemiesrow in EnemiesTable.Rows)
-            {
-                string Name = (string)Enemiesrow["Name"];
-                int Dmg = (int)Enemiesrow["Dmg"];
-                int Hp = (int)Enemiesrow["Hp"];
-                enemy.Name = Name;
-                enemy.AttackDmg = Dmg;
-                enemy.Hp = Hp;
-            }
-            return enemy;
 
-        } */
 
-        public string AllbookQuery = "SELECT * FROM Table";
+
+
+/*  public Enemy unit(int received)
+  {
+      Enemy enemy = new Enemy();
+      string enemyQuery = $"SELECT * FROM Enemies WHERE enemyid = {received}";
+      DataSet resultSet = Execute(enemyQuery);
+
+      // Get the first table of the data set, and save in variable:
+      DataTable EnemiesTable = resultSet.Tables[0];
+      foreach (DataRow Enemiesrow in EnemiesTable.Rows)
+      {
+          string Name = (string)Enemiesrow["Name"];
+          int Dmg = (int)Enemiesrow["Dmg"];
+          int Hp = (int)Enemiesrow["Hp"];
+          enemy.Name = Name;
+          enemy.AttackDmg = Dmg;
+          enemy.Hp = Hp;
+      }
+      return enemy;
+
+  } */
+
+public string AllbookQuery = "SELECT * FROM Table";
         public List<books> GetBooks()
         {
             List<books> AllBooks = new List<books>(0);
@@ -113,5 +123,14 @@ namespace examen
             string removeBookQuery = $"DELETE INTO Table ()"
 
         } */
+
+
+        public void removereg(Bruger brug)
+        {
+
+            string RemoveNewBookQuery = $"INSERT INTO Table (Author),(Title),(Publisher) VALUES('','{book.Copies}','')";
+            Execute(RemoveNewBookQuery);
+
+        }
     }
 }

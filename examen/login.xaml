@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="login" Height="450" Width="800">
     <Canvas>
-        <TextBox x:Name="logintxtbox1" Height="23" Canvas.Left="34" TextWrapping="Wrap" Text="" Canvas.Top="246" Width="120"/>
-        <TextBox x:Name="logintxtbox2" Height="23" Canvas.Left="34" TextWrapping="Wrap" Text="" Canvas.Top="287" Width="120"/>
+        <TextBox x:Name="txtUserId" Height="23" Canvas.Left="34" TextWrapping="Wrap" Text="" Canvas.Top="246" Width="120" x:FieldModifier="public" />
+        <TextBox x:Name="txtPassword" Height="23" Canvas.Left="34"   Canvas.Top="287" Width="120" x:FieldModifier="public" />
         <TextBlock x:Name="loginheadtxt" Canvas.Left="34" TextWrapping="Wrap" Text="login" Canvas.Top="200" FontSize="21" />
         <TextBlock x:Name="loginuser" Text="skriv titel" Canvas.Left="190" TextWrapping="Wrap" Canvas.Top="246" Height="23" Width="143" Visibility="Visible" />
         <TextBlock x:Name="loginpassword" Text="skriv titel" Canvas.Left="190" TextWrapping="Wrap" Canvas.Top="287" Height="23" Width="143" Visibility="Visible" />
