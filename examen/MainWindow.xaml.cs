@@ -23,7 +23,7 @@ namespace examen
     public partial class MainWindow : Window
     {      List<books> book = new List<books>();
         private protected logic LC = new logic();
-        private protected bruger BG = new bruger();
+        private protected Bruger BG = new Bruger("","",0);
       
         bool login, txt2, startup = true;
         public MainWindow()
@@ -103,6 +103,14 @@ namespace examen
 
            
             
+
+        }
+
+        public string Brugerinfo()
+        {
+            string brugernavn = brugerTXT.Text;
+            
+            return brugernavn;
 
         }
     }

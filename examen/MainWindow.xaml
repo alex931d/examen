@@ -9,7 +9,7 @@
     <Canvas x:Name="maincanvas" >
         <TextBox x:Name="brugerTXT" Height="23" Canvas.Left="34" TextWrapping="Wrap" Text="" Canvas.Top="37" Width="400" Visibility="Visible" />
         <TextBox  x:Name="TitleTXT" Height="23" Canvas.Left="34" TextWrapping="Wrap" Text="" Canvas.Top="82" Width="400" Visibility="Hidden" />
-        <Button x:Name="btn1" Content="submit;" Canvas.Left="34" Canvas.Top="85" Width="75" Click="Button_Click" Visibility="Visible" />
+        <Button x:Name="btn1" Content="submit;" Canvas.Left="34" Canvas.Top="144" Width="75" Click="Button_Click" Visibility="Visible" />
         <TextBlock x:Name="txtblock2" Text="skriv titel" Canvas.Left="468" TextWrapping="Wrap" Canvas.Top="82" Height="23" Width="143" Visibility="Hidden" />
         <TextBlock x:Name="regtxt" FontSize="20" Height="28" Canvas.Left="34" TextWrapping="Wrap" Text="Registering af bøger" Width="312" Visibility="Visible" />
         <TextBlock x:Name="txtblock1" Text="skriv bruger" Canvas.Left="468" TextWrapping="Wrap" Canvas.Top="37" Height="23" Width="143" Visibility="Visible" />

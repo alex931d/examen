@@ -23,25 +23,21 @@ namespace examen
 
         }
 
-        internal List<bruger> Brug { get; set; } = new List<bruger>();
+        internal List<Bruger> Brug { get; set; } = new List<Bruger>();
 
-        public void bruger(books book)
+        public void Bruger(books book)
         {
             int i = 0;
 
 
             if (i != book.Copies)
             {
-
+                Brug.Add(bruger);
             }
-
+           
         }
 
 
-        public void brugerinfo()
-        {
-            string brugernavn = brugerTXT.Text;
-            
-        }
+       
     }
 }
