@@ -32,7 +32,7 @@ namespace examen
 
             if (i != book.Copies)
             {
-                Brug.Add(bruger);
+             
             }
            
         }

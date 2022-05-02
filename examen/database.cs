@@ -97,11 +97,16 @@ namespace examen
         public void AddNew(books book)
         {
             string addNewBookQuery =
-                    $"INSERT INTO Table (Author),(Title),(Publisher) VALUES('{book.Year}','{book.Copies}','{book.ISBN}')";
+                    $"INSERT INTO Table (Author),(Title),(Publisher) VALUES('','{book.Copies}','')";
             Execute(addNewBookQuery);
         }
 
- 
+ public void insert(books book)
+        {
+
+            string insertburgernavnQuery = $"INSERT INTO Table (book.Copies), (Lent)";
+
+        }
       /*  public void Remove(books book)
 
         {
