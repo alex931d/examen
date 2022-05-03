@@ -13,7 +13,7 @@ namespace examen
     {
 
 
-        private string connectionString = "Data Source=CV-BB-5995;Initial Catalog=bogdatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+       /*  private string connectionString = "Data Source=CV-BB-5995;Initial Catalog=bogdatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public string AllbookQuery = $"Select * from tblCustomerInfo where CustomerEmail=@CustomerEmail", con;
 
 
@@ -91,7 +91,7 @@ namespace examen
             catch (InvalidOperationException)
             {
                 throw;
-            }
-        }
+          } 
+        }  */
     }
 }

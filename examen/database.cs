@@ -13,10 +13,6 @@ namespace examen
 
         private string connectionString = "Data Source=CV-BB-5995;Initial Catalog=bogdatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        SqlConnection con;
-        SqlCommand cmd;
-        SqlDataReader reader;
-
         public DataSet Execute(string query)
 
         {
@@ -91,6 +87,7 @@ public string AllbookQuery = "SELECT * FROM Table";
                 int Publication = (int)Tablerow["Publication"];
                 int Copies = (int)Tablerow["Copies"];
                 int ISBN = (int)Tablerow["ISBN"];
+                string User = (string)Tablerow["User"];
                
                 books book = new books();
                 book.Author = Author;
@@ -100,6 +97,9 @@ public string AllbookQuery = "SELECT * FROM Table";
                 book.Year = Publication;
                 book.Copies = Copies;
                 book.ISBN = ISBN;
+                book.User = User;
+                
+              
                 AllBooks.Add(book);
             }
             return AllBooks;
@@ -128,7 +128,7 @@ public string AllbookQuery = "SELECT * FROM Table";
         public void removereg(Bruger brug)
         {
 
-            string RemoveNewBookQuery = $"INSERT INTO Table (Author),(Title),(Publisher) VALUES('','{book.Copies}','')";
+            string RemoveNewBookQuery = $"INSERT INTO Table (Author),(Title),(Publisher) VALUES('','.','')";
             Execute(RemoveNewBookQuery);
 
         }

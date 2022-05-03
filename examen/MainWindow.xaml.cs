@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Protocols;
+using NLog.Internal;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,103 +19,176 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 
 
+using MongoDB.Driver.Core.Configuration;
+
 namespace examen
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {      List<books> book = new List<books>();
+    {
+        List<books> book = new List<books>();
         private protected logic LC = new logic();
-        private protected Bruger BG = new Bruger("","",0);
-      
-        bool login, txt2, startup = true;
+        private protected Bruger BG = new Bruger("", "", 0);
+        public string connectionString = "Data Source=CV-BB-5995;Initial Catalog=bogdatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+
+
+        private void btn1_Click(object sender, RoutedEventArgs e)
+        {
+            /* SqlConnection Conn = new SqlConnection(connectionString);
+
+             // Open the Database Connection
+             Conn.Open();
+
+
+
+             // Command String
+             string Update = $"Update Table SET User = '" + txtdata1.Text + "' where ID = '" + txtblock2.Text + "'";
+
+
+
+             // Initialize the command query and connection
+             SqlCommand cmd = new SqlCommand(Update, Conn);
+
+
+             // Execute the command
+             cmd.ExecuteNonQuery(); */
+
+
+            try
+            {
+
+                var sql = $"UPDATE [Table] SET (User) User = {txtdata2.Text} WHERE ID = 1";
+                string insert = $"INSERT INTO [Table] (User)";
+           
+                string select = $"SELECT (User) FORM [Table]";
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    using (var command = new SqlCommand(insert, connection))
+                    {
+
+                       // command.Parameters.AddWithValue("@User", txtdata2.Text);
+
+
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception g)
+            {
+                MessageBox.Show($"Failed to update. Error message: {g.Message}");
+            }
+
+
+
+
+            /*  MessageBox.Show("One Record Inserted");
+              txtdata1.Text = string.Empty;
+              txtdata2.Text = string.Empty; */
+
+
+            this.BindGrid();
+
+
+
+        }
+
+
+
         public MainWindow()
         {
 
             InitializeComponent();
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
-           timer.Tick += update; 
-            timer.Start();
-      
+
+
 
 
 
         }
 
-        private void btn2_Click(object sender, RoutedEventArgs e)
-        {
-           if (string.IsNullOrEmpty(TitleTXT.Text)  || ) MessageBox.Show("skriv titel");
-            else
 
-               txt2 = true;
+
+
+
+
+
+
+
+        public void BindGrid()
+        {
+
+            /* SqlConnection Conn = new SqlConnection(connectionString);
+
+
+            Conn.Open();
+
+            SqlDataAdapter Adapter = new SqlDataAdapter("Select * from Table", Conn);
+
+            DataSet Bind = new DataSet();
+            Adapter.Fill(Bind);
+
+            dataGrid1.DataContext = Bind;
+
+
+            Conn.Close(); */
+
         }
+    
+        
 
-        private void update(object sender, EventArgs e)
+         
+
+
+
+            public void BindGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            if (startup == true)
+
+
+
+            string CmdString = string.Empty;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+
             {
+                var displaybookQuery = $"";
+                CmdString = "Select Author, User from [Table]";
 
+                SqlCommand cmd = new SqlCommand(CmdString, con);
 
-                /* maincanvas.Children.Add(AuthorTXT);
-                 maincanvas.Children.Add(TitleTXT);
-                 maincanvas.Children.Add(btn1);
-                 maincanvas.Children.Add(txtblock1);
-                 maincanvas.Children.Add(txtblock2);
-                 maincanvas.Children.Add(regtxt); */
-                brugerTXT.Visibility = Visibility.Visible;
-               
-                txtblock1.Visibility = Visibility.Visible;
-               
-                regtxt.Visibility = Visibility.Visible;
-                btn1.Visibility = Visibility.Visible;
-                startup = false;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                DataTable dt = new DataTable();
+
+                sda.Fill(dt);
+
+                dataGrid1.ItemsSource = dt.DefaultView;
+
             }
-
-            if (login == true && startup == false)
-            {
-                brugerTXT.Visibility = Visibility.Collapsed;
-                TitleTXT.Visibility = Visibility.Collapsed;
-                txtblock1.Visibility = Visibility.Collapsed;
-                txtblock2.Visibility = Visibility.Collapsed;
-                regtxt.Visibility = Visibility.Collapsed;
-                btn1.Visibility = Visibility.Collapsed;
-            }
-          
-            /* if (login == true && txt2 == true && startup == false)
-                {
-                    brugerTXT.Visibility = Visibility.Collapsed;
-                TitleTXT.Visibility = Visibility.Collapsed;
-                txtblock1.Visibility = Visibility.Collapsed;
-                txtblock2.Visibility = Visibility.Collapsed;
-                regtxt.Visibility = Visibility.Collapsed;
-                btn1.Visibility = Visibility.Collapsed;
-
-                //  maincanvas.Children.Clear();
-
-
-                } */
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (string.IsNullOrEmpty(brugerTXT.Text) || brugerTXT.Text == "bruger" || brugerTXT.Text == "admin") MessageBox.Show("skriv bruger");
-            else
-               login = true;
-
-           
-            
-
-        }
-
-        public string Brugerinfo()
-        {
-            string brugernavn = brugerTXT.Text;
-            
-            return brugernavn;
-
         }
     }
 }
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+    /*  public string Brugerinfo()
+          {
+              string brugernavn = brugerTXT.Text;
+
+              return brugernavn;
+
+          }
+      } */
+

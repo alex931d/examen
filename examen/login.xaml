@@ -13,6 +13,5 @@
         <TextBlock x:Name="loginuser" Text="skriv titel" Canvas.Left="190" TextWrapping="Wrap" Canvas.Top="246" Height="23" Width="143" Visibility="Visible" />
         <TextBlock x:Name="loginpassword" Text="skriv titel" Canvas.Left="190" TextWrapping="Wrap" Canvas.Top="287" Height="23" Width="143" Visibility="Visible" />
         <Button Content="LOGIN" x:Name="btnLogin" Width="100" Height="30" Click="btnLogin_Click_1" Background="#80ff00" Foreground="Black" BorderBrush="White" Canvas.Left="34" Canvas.Top="334"/>
-        <Button Content="CLOSE" x:Name="btnClose" Width="100" Click="btnClose_Click_1" Background="#ff2d2d" Foreground="Black" BorderBrush="White" Canvas.Left="157" Canvas.Top="339"/>
     </Canvas>
 </Window>

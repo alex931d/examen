@@ -45,11 +45,12 @@ namespace examen
             String username = "username";
         String password = "password";
 
-    if ((txtUserId.Text == username) && (txtPassword.Text == password))
+           if ((txtUserId.Text == username) && (txtPassword.Text == password))
             { 
-           this.Close();
+        
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+                this.Close();
             }
                 else if (!(txtUserId.Text == username) || !(txtPassword.Text == password))
                 {
