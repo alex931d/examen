@@ -60,13 +60,13 @@ namespace examen
             try
             {
 
-                var sql = $"UPDATE [Table] SET (User) User = {txtdata2.Text} WHERE ID = 1";
+                var sql = $"UPDATE [Table] SET (User) = {txtdata2.Text} WHERE ID = 1";
                 string insert = $"INSERT INTO [Table] (User)";
            
                 string select = $"SELECT (User) FORM [Table]";
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    using (var command = new SqlCommand(insert, connection))
+                    using (var command = new SqlCommand(sql, connection))
                     {
 
                        // command.Parameters.AddWithValue("@User", txtdata2.Text);
@@ -154,7 +154,7 @@ namespace examen
 
             {
                 var displaybookQuery = $"";
-                CmdString = "Select Author, User from [Table]";
+                CmdString = $"Select Author, Title = {txtdata2.Text}, User from [Table]";
 
                 SqlCommand cmd = new SqlCommand(CmdString, con);
 
