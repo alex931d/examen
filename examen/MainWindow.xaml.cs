@@ -20,6 +20,7 @@ using System.Windows.Threading;
 
 
 using MongoDB.Driver.Core.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace examen
 {
@@ -30,8 +31,9 @@ namespace examen
     {
         List<books> book = new List<books>();
         private protected logic LC = new logic();
+     
         private protected Bruger BG = new Bruger("", "", 0);
-        public string connectionString = "Data Source=CV-BB-5995;Initial Catalog=bogdatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public string connectionString = "Data Source=DESKTOP-8SP1QVI;Initial Catalog=bogdatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 
 
@@ -103,7 +105,7 @@ namespace examen
 
             InitializeComponent();
 
-
+            Utility.ListLenting = new List<lenting>();
 
 
 
@@ -168,6 +170,72 @@ namespace examen
 
             }
         }
+
+        public void datagrid2(object sender, RoutedEventArgs e)
+        {
+
+            comboboxdata.ItemsSource = null;
+            comboboxdata.ItemsSource = Utility.ListLenting;
+
+
+
+        }
+        
+    /*  private void ShowData()
+            {
+                comboboxdata.ItemsSource = null;
+                comboboxdata.ItemsSource = Utility.ListLenting;
+            } */
+      
+        private void ClearControls()
+        {
+            txtdata1.Text = string.Empty;
+           
+            comboboxdata.SelectedIndex = 0;
+         
+        }
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+         
+            string id = txtdata1.Text;
+
+
+            string movie = ((ComboBoxItem)comboboxdata.SelectedItem).Content.ToString();
+
+
+
+
+            lenting lng = new lenting(id,movie);
+          
+            Utility.ListLenting.Add(lng);
+         
+            MessageBox.Show(this, $"du har lånt en bog med titel {((ComboBoxItem)comboboxdata.SelectedItem).Content.ToString()}");
+         
+            ClearControls();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
+
+          
+        }
+
+         private void comboboxdata_Loaded(object sender, RoutedEventArgs e)
+         { /*
+             string Sql = "select Title from [Table]";
+             SqlConnection conn = new SqlConnection(connectionString);
+             conn.Open();
+             SqlCommand cmd = new SqlCommand(Sql, conn);
+             using (SqlDataReader saReader = cmd.ExecuteReader())
+             {
+                 while (saReader.Read())
+                 {
+                     string name = saReader.GetString(0);
+                     comboboxdata.Items.Add(name);
+                 }
+             } */
+         } 
     }
 }
     

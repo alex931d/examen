@@ -10,11 +10,11 @@
         Title="MainWindow" Height="600" Width="600">
     <Canvas x:Name="maincanvas" >
         <TextBox  x:Name="TitleTXT" Height="23" Canvas.Left="34" TextWrapping="Wrap" Text="" Canvas.Top="82" Width="400" Visibility="Hidden" />
-        <Button x:Name="btn1" Content="submit;" Canvas.Left="60" Canvas.Top="472" Width="75"  Visibility="Visible" Click="btn1_Click" />
+        <Button x:Name="btn1" Content="submit;" Canvas.Left="412" Canvas.Top="483" Width="75"  Visibility="Visible" Click="btn1_Click" />
         <TextBlock x:Name="txtblock2" Text="skriv titel" Canvas.Left="468" TextWrapping="Wrap" Canvas.Top="82" Height="23" Width="143" Visibility="Hidden" />
 
 
-        <DataGrid AutoGenerateColumns="False" Grid.Row="4" Height="199" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="481" ItemsSource="{Binding Path=MyDataBinding}"  CanUserResizeRows="False" Loaded="BindGrid_Loaded" Canvas.Left="60" Canvas.Top="234" >
+        <DataGrid AutoGenerateColumns="False" Grid.Row="4" Height="199" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="481" ItemsSource="{Binding Path=MyDataBinding}"  CanUserResizeRows="False" Loaded="BindGrid_Loaded" Canvas.Left="660" Canvas.Top="127" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Author" Width="100" Binding="{Binding Author}"/>
 
@@ -22,17 +22,34 @@
 
                 <DataGridTextColumn Header="lenting" Width="100" Binding="{Binding User}"/>
 
-               
+
             </DataGrid.Columns>
         </DataGrid>
+
+        <DataGrid AutoGenerateColumns="True" x:Name="Datagrid2" Canvas.Left="21" Canvas.Top="195" Height="194" Width="125" Loaded="datagrid2">
+            <DataGrid.Columns>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+        <Label Grid.Row="0" Grid.Column="0" Content="user" Canvas.Top="79" Canvas.Left="21"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Name:" Canvas.Top="392" Canvas.Left="721"/>
+        <ComboBox x:Name="comboboxdata" Grid.Row="3" Grid.Column="1"  Canvas.Left="60" Canvas.Top="110" Loaded="comboboxdata_Loaded" >
+            <ComboBoxItem IsSelected="True">Firefight</ComboBoxItem>
+            <ComboBoxItem>DeadhouseGates</ComboBoxItem>
+            <ComboBoxItem>The Cold Moon</ComboBoxItem>
+        </ComboBox>
+        <Button Grid.Row="5" Grid.Column="1" Content="Add" Name="btnAdd" Canvas.Left="60" Canvas.Top="156" Click="btnAdd_Click"/>
+
         <TextBox x:Name="txtdata1" Height="23" Canvas.Left="60" TextWrapping="Wrap" Text="" Canvas.Top="82" Width="222"/>
-        <TextBox x:Name="txtdata2" Height="23" Canvas.Left="60" TextWrapping="Wrap" Text="" Canvas.Top="144" Width="222"/>
-        <TextBlock Canvas.Left="332" TextWrapping="Wrap" Text="skriv fofatter" Canvas.Top="89" RenderTransformOrigin="-0.145,1.331"/>
-        <TextBlock Canvas.Left="332" TextWrapping="Wrap" Text="skriv bruger" Canvas.Top="144" RenderTransformOrigin="-0.145,1.331"/>
+        <TextBox x:Name="txtdata2" Height="23" Canvas.Left="803" TextWrapping="Wrap" Text="" Canvas.Top="387" Width="222"/>
         <TextBlock FontSize="27" Canvas.Left="60" TextWrapping="Wrap" Text="lån en bog" Canvas.Top="24" RenderTransformOrigin="-0.145,1.331"/>
-        <Button x:Name="allbooksbtn" Content="vis udlån" Canvas.Left="422" Canvas.Top="484" Width="75"/>
-        <TextBlock FontSize="27" Canvas.Left="422" TextWrapping="Wrap" Text="oversigter" Canvas.Top="443" RenderTransformOrigin="-0.145,1.331"/>
-        <Button Content="Button" Canvas.Left="422" Canvas.Top="522" Width="76"/>
+        <Button x:Name="allbooksbtn" Content="vis udlån" Canvas.Left="341" Canvas.Top="521" Width="75"/>
+        <TextBlock FontSize="27" Canvas.Left="176" TextWrapping="Wrap" Text="oversigter" Canvas.Top="474" RenderTransformOrigin="-0.145,1.331"/>
+        <Button Content="Button" Canvas.Left="493" Canvas.Top="527" Width="76"/>
+        <Button Content="update" Canvas.Left="22" Canvas.Top="403" Width="74"/>
 
 
     </Canvas>
