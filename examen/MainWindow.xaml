@@ -25,9 +25,7 @@
                
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="txtdata1" Height="23" Canvas.Left="60" TextWrapping="Wrap" Text="" Canvas.Top="82" Width="222"/>
         <TextBox x:Name="txtdata2" Height="23" Canvas.Left="60" TextWrapping="Wrap" Text="" Canvas.Top="144" Width="222"/>
-        <TextBlock Canvas.Left="332" TextWrapping="Wrap" Text="skriv fofatter" Canvas.Top="89" RenderTransformOrigin="-0.145,1.331"/>
         <TextBlock Canvas.Left="332" TextWrapping="Wrap" Text="skriv bruger" Canvas.Top="144" RenderTransformOrigin="-0.145,1.331"/>
         <TextBlock FontSize="27" Canvas.Left="60" TextWrapping="Wrap" Text="lån en bog" Canvas.Top="24" RenderTransformOrigin="-0.145,1.331"/>
         <Button x:Name="allbooksbtn" Content="vis udlån" Canvas.Left="422" Canvas.Top="484" Width="75"/>

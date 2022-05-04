@@ -63,7 +63,7 @@ namespace examen
 
   } */
 
-public string AllbookQuery = "SELECT * FROM Table";
+public string AllbookQuery = "SELECT * FROM book_Table";
         public List<books> GetBooks()
         {
             List<books> AllBooks = new List<books>(0);
@@ -87,7 +87,7 @@ public string AllbookQuery = "SELECT * FROM Table";
                 int Publication = (int)Tablerow["Publication"];
                 int Copies = (int)Tablerow["Copies"];
                 int ISBN = (int)Tablerow["ISBN"];
-                string User = (string)Tablerow["User"];
+                string User = (string)Tablerow["Bruger"];
                
                 books book = new books();
                 book.Author = Author;
@@ -107,14 +107,14 @@ public string AllbookQuery = "SELECT * FROM Table";
         public void AddNew(books book)
         {
             string addNewBookQuery =
-                    $"INSERT INTO Table (Author),(Title),(Publisher) VALUES('','{book.Copies}','')";
+                    $"INSERT INTO book_Table (Author),(Title),(Publisher) VALUES('','{book.Copies}','')";
             Execute(addNewBookQuery);
         }
 
  public void insert(books book)
         {
 
-            string insertburgernavnQuery = $"INSERT INTO Table (book.Copies), (Lent)";
+            string insertburgernavnQuery = $"INSERT INTO book_Table (book.Copies), (Lent)";
 
         }
       /*  public void Remove(books book)
@@ -128,7 +128,7 @@ public string AllbookQuery = "SELECT * FROM Table";
         public void removereg(Bruger brug)
         {
 
-            string RemoveNewBookQuery = $"INSERT INTO Table (Author),(Title),(Publisher) VALUES('','.','')";
+            string RemoveNewBookQuery = $"INSERT INTO book_Table (Author),(Title),(Publisher) VALUES('','.','')";
             Execute(RemoveNewBookQuery);
 
         }

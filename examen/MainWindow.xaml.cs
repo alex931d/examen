@@ -60,8 +60,9 @@ namespace examen
             try
             {
 
-                var sql = $"UPDATE [Table] SET (User) = {txtdata2.Text} WHERE ID = 1";
+                var sql = $"UPDATE [book_Table] SET Bruger = '{txtdata2}' WHERE ID = 1";
                 string insert = $"INSERT INTO [Table] (User)";
+
            
                 string select = $"SELECT (User) FORM [Table]";
                 using (var connection = new SqlConnection(connectionString))
@@ -74,6 +75,8 @@ namespace examen
 
                         connection.Open();
                         command.ExecuteNonQuery();
+                        dataGrid1.ItemsSource = null;
+                        
                     }
                 }
             }
@@ -154,7 +157,7 @@ namespace examen
 
             {
                 var displaybookQuery = $"";
-                CmdString = $"Select Author, Title = {txtdata2.Text}, User from [Table]";
+                CmdString = $"Select Author, Title from [book_Table]";
 
                 SqlCommand cmd = new SqlCommand(CmdString, con);
 
@@ -164,6 +167,7 @@ namespace examen
 
                 sda.Fill(dt);
 
+                dataGrid1.ItemsSource = null;
                 dataGrid1.ItemsSource = dt.DefaultView;
 
             }
