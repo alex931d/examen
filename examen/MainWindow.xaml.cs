@@ -30,10 +30,11 @@ namespace examen
     {
         List<books> book = new List<books>();
         private protected logic LC = new logic();
+        bool btn1click = false, btn2click = false, btn3click = false;
         private protected Bruger BG = new Bruger("", "", 0);
         public string connectionString = "Data Source=CV-BB-5995;Initial Catalog=bogdatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-
+        DataSet Bind = new DataSet();
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
@@ -60,23 +61,28 @@ namespace examen
             try
             {
 
-                var sql = $"UPDATE [book_Table] SET Bruger = '{txtdata2}' WHERE ID = 1";
+                var sql = "UPDATE [book_Table] SET Bruger = '@User' WHERE ID = 1";
                 string insert = $"INSERT INTO [Table] (User)";
 
-           
+                // dataGrid1.ItemsSource = null;
                 string select = $"SELECT (User) FORM [Table]";
                 using (var connection = new SqlConnection(connectionString))
                 {
                     using (var command = new SqlCommand(sql, connection))
                     {
 
-                       // command.Parameters.AddWithValue("@User", txtdata2.Text);
+                        command.Parameters.AddWithValue("@User", txtdata2.Text);
 
 
                         connection.Open();
                         command.ExecuteNonQuery();
-                        dataGrid1.ItemsSource = null;
-                        
+
+                        dataGrid1.Items.Clear();
+                
+                        btn1click = true;
+
+                        this.bindgrid();
+                        //  dataGrid1.DataContext = Bind;
                     }
                 }
             }
@@ -93,7 +99,7 @@ namespace examen
               txtdata2.Text = string.Empty; */
 
 
-            this.BindGrid();
+
 
 
 
@@ -120,43 +126,70 @@ namespace examen
 
 
 
-        public void BindGrid()
+
+        public void bindgrid()
         {
 
-            /* SqlConnection Conn = new SqlConnection(connectionString);
+
+             SqlConnection Conn = new SqlConnection(connectionString);
+
+             // Open the Database Connection
+             Conn.Open();
+
+             SqlDataAdapter Adapter = new SqlDataAdapter("Select * from book_Table", Conn);
 
 
-            Conn.Open();
+             Adapter.Fill(Bind, "MyDataBinding");
+         
+             dataGrid1.DataContext = Bind;
+            dataGrid1.Items.Refresh();
+            // Close the Database Connection
+            Conn.Close(); 
+        }
 
-            SqlDataAdapter Adapter = new SqlDataAdapter("Select * from Table", Conn);
-
-            DataSet Bind = new DataSet();
-            Adapter.Fill(Bind);
-
-            dataGrid1.DataContext = Bind;
 
 
-            Conn.Close(); */
+        public void comboboxdata_Loaded(object sender, RoutedEventArgs e)
+        {
+
+
 
         }
-    
-        
 
-         
-
-
-
-            public void BindGrid_Loaded(object sender, RoutedEventArgs e)
+        public void BindGrid_Loaded(object sender, RoutedEventArgs e)
         {
 
 
 
-            string CmdString = string.Empty;
+            /*   SqlConnection Conn = new SqlConnection(connectionString);
+
+               // Open the Database Connection
+               Conn.Open();
+
+               SqlDataAdapter Adapter = new SqlDataAdapter("Select * from book_Table", Conn);
+
+
+               Adapter.Fill(Bind, "MyDataBinding");
+
+               dataGrid1.DataContext = Bind;
+
+               // Close the Database Connection
+               Conn.Close();    */
+
+
+
+
+
+
+          /*  string CmdString = string.Empty;
 
             using (SqlConnection con = new SqlConnection(connectionString))
 
             {
                 var displaybookQuery = $"";
+
+
+
                 CmdString = $"Select Author, Title from [book_Table]";
 
                 SqlCommand cmd = new SqlCommand(CmdString, con);
@@ -168,12 +201,13 @@ namespace examen
                 sda.Fill(dt);
 
                 dataGrid1.ItemsSource = null;
-                dataGrid1.ItemsSource = dt.DefaultView;
+                dataGrid1.ItemsSource = dt.DefaultView;  */
 
             }
+
         }
     }
-}
+
     
 
     

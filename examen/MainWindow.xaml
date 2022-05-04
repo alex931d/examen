@@ -12,7 +12,11 @@
         <TextBox  x:Name="TitleTXT" Height="23" Canvas.Left="34" TextWrapping="Wrap" Text="" Canvas.Top="82" Width="400" Visibility="Hidden" />
         <Button x:Name="btn1" Content="submit;" Canvas.Left="60" Canvas.Top="472" Width="75"  Visibility="Visible" Click="btn1_Click" />
         <TextBlock x:Name="txtblock2" Text="skriv titel" Canvas.Left="468" TextWrapping="Wrap" Canvas.Top="82" Height="23" Width="143" Visibility="Hidden" />
-
+        <ComboBox x:Name="comboboxdata" Grid.Row="3" Grid.Column="1"  Canvas.Left="60" Canvas.Top="89" Loaded="comboboxdata_Loaded" >
+            <ComboBoxItem IsSelected="True">Firefight</ComboBoxItem>
+            <ComboBoxItem>DeadhouseGates</ComboBoxItem>
+            <ComboBoxItem>The Cold Moon</ComboBoxItem>
+        </ComboBox>
 
         <DataGrid AutoGenerateColumns="False" Grid.Row="4" Height="199" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="481" ItemsSource="{Binding Path=MyDataBinding}"  CanUserResizeRows="False" Loaded="BindGrid_Loaded" Canvas.Left="60" Canvas.Top="234" >
             <DataGrid.Columns>
@@ -20,9 +24,9 @@
 
                 <DataGridTextColumn Header="Titel" Width="100" Binding="{Binding Title}"/>
 
-                <DataGridTextColumn Header="lenting" Width="100" Binding="{Binding User}"/>
+                <DataGridTextColumn Header="lenting" Width="100" Binding="{Binding Bruger}"/>
 
-               
+
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="txtdata2" Height="23" Canvas.Left="60" TextWrapping="Wrap" Text="" Canvas.Top="144" Width="222"/>
@@ -31,6 +35,7 @@
         <Button x:Name="allbooksbtn" Content="vis udlån" Canvas.Left="422" Canvas.Top="484" Width="75"/>
         <TextBlock FontSize="27" Canvas.Left="422" TextWrapping="Wrap" Text="oversigter" Canvas.Top="443" RenderTransformOrigin="-0.145,1.331"/>
         <Button Content="Button" Canvas.Left="422" Canvas.Top="522" Width="76"/>
+        <TextBlock Canvas.Left="159" TextWrapping="Wrap" Text="vælg bog" Canvas.Top="92" RenderTransformOrigin="-0.145,1.331"/>
 
 
     </Canvas>
