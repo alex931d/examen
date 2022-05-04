@@ -11,7 +11,7 @@
     <Canvas x:Name="maincanvas" >
         <TextBox  x:Name="TitleTXT" Height="23" Canvas.Left="34" TextWrapping="Wrap" Text="" Canvas.Top="82" Width="400" Visibility="Hidden" />
         <Button x:Name="btn1" Content="submit;" Canvas.Left="60" Canvas.Top="472" Width="75"  Visibility="Visible" Click="btn1_Click" />
-        <TextBlock x:Name="txtblock2" Text="skriv titel" Canvas.Left="468" TextWrapping="Wrap" Canvas.Top="82" Height="23" Width="143" Visibility="Hidden" />
+       
         <ComboBox x:Name="comboboxdata" Grid.Row="3" Grid.Column="1"  Canvas.Left="60" Canvas.Top="89" Loaded="comboboxdata_Loaded" >
             <ComboBoxItem IsSelected="True">Firefight</ComboBoxItem>
             <ComboBoxItem>DeadhouseGates</ComboBoxItem>

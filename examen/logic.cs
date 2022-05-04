@@ -37,6 +37,12 @@ namespace examen
            
         }
 
+        public void excute(string AllbookQuery)
+        {
+            
+
+        }
+
   
 
 

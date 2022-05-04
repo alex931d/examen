@@ -5,11 +5,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace examen
 {
     class database
     {
+        DataSet Bind = new DataSet();
 
         private string connectionString = "Data Source=CV-BB-5995;Initial Catalog=bogdatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
@@ -111,6 +114,31 @@ public string AllbookQuery = "SELECT * FROM book_Table";
             Execute(addNewBookQuery);
         }
 
+
+        public void checkifexist(books book, string movie, string txt)
+        {
+            string s = $"SELECT Title, Bruger WHERE Bruger='{book.User}'";
+            
+            if (book.User == txt && book.Title == movie && book.Copies == 0)
+            {
+                string removebookquery = $"UPDATE [book_Table] SET Bruger = '', Copies = '1' WHERE Title = '{movie}'";
+
+                Execute(removebookquery);
+            }
+            
+
+
+            int i = 0;
+            if (i != book.Copies)
+            {
+                string updatequery = $"UPDATE [book_Table] Set  WHERE {movie}";
+            }
+         
+        }
+
+     
+
+
  public void insert(books book)
         {
 
@@ -132,5 +160,66 @@ public string AllbookQuery = "SELECT * FROM book_Table";
             Execute(RemoveNewBookQuery);
 
         }
+        public string GetAndRemove(books book, string movie, string txt)
+        {
+
+            if (book.User == txt && book.Title == movie && book.Copies == 0)
+            {
+                string removebookquery = $"UPDATE [book_Table] SET Bruger = '', Copies = '1' WHERE Title = '{movie}'";
+
+                Execute(removebookquery);
+                return "";
+            }
+            else if (book.Title == movie && book.Copies == 1)
+            {
+                try
+                {
+                    var sql = $@"UPDATE [book_Table] SET Bruger = '@User', Copies = '0' WHERE Title = '{movie}'";
+
+
+
+                    string insert = $"INSERT INTO [Table] (User)";
+
+                    // dataGrid1.ItemsSource = null;
+                    string select = $"SELECT (User) FORM [Table]";
+                    
+                    using (var connection = new SqlConnection(connectionString))
+                    {
+                        using (var command = new SqlCommand(sql, connection))
+
+                        {
+
+
+                            command.Parameters.AddWithValue("@User", txt);
+
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+
+                            //  dataGrid1.Items.Clear();
+
+
+
+                            
+                            //  dataGrid1.DataContext = Bind;
+
+                        }
+                    }
+
+                }
+                catch (Exception g)
+                {
+                    MessageBox.Show($"Failed to update. Error message: {g.Message}");
+                }
+            }
+            return "";
+
+        }
+
+      
+
+
+
+
     }
 }

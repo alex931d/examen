@@ -29,69 +29,21 @@ namespace examen
     public partial class MainWindow : Window
     {
         List<books> book = new List<books>();
+        
         private protected logic LC = new logic();
-        bool btn1click = false, btn2click = false, btn3click = false;
         private protected Bruger BG = new Bruger("", "", 0);
+        database db = new database();
         public string connectionString = "Data Source=CV-BB-5995;Initial Catalog=bogdatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+        
         DataSet Bind = new DataSet();
+
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-            /* SqlConnection Conn = new SqlConnection(connectionString);
-
-             // Open the Database Connection
-             Conn.Open();
 
 
-
-             // Command String
-             string Update = $"Update Table SET User = '" + txtdata1.Text + "' where ID = '" + txtblock2.Text + "'";
-
-
-
-             // Initialize the command query and connection
-             SqlCommand cmd = new SqlCommand(Update, Conn);
-
-
-             // Execute the command
-             cmd.ExecuteNonQuery(); */
-
-
-            try
-            {
-
-                var sql = "UPDATE [book_Table] SET Bruger = '@User' WHERE ID = 1";
-                string insert = $"INSERT INTO [Table] (User)";
-
-                // dataGrid1.ItemsSource = null;
-                string select = $"SELECT (User) FORM [Table]";
-                using (var connection = new SqlConnection(connectionString))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-
-                        command.Parameters.AddWithValue("@User", txtdata2.Text);
-
-
-                        connection.Open();
-                        command.ExecuteNonQuery();
-
-                        dataGrid1.Items.Clear();
-                
-                        btn1click = true;
-
-                        this.bindgrid();
-                        //  dataGrid1.DataContext = Bind;
-                    }
-                }
-            }
-            catch (Exception g)
-            {
-                MessageBox.Show($"Failed to update. Error message: {g.Message}");
-            }
-
-
+            db.GetAndRemove(book,txtdata2;
+            this.bindgrid(movie);
 
 
             /*  MessageBox.Show("One Record Inserted");
@@ -114,20 +66,32 @@ namespace examen
 
 
 
+        
 
 
+    }
+
+        public string Getstext2() { 
+            
+            string txt = txtdata2.Text;
+
+            return txt;
+        
+        }
+
+        public string Get_combo()
+        {
+            string movie = ((ComboBoxItem)comboboxdata.SelectedItem).Content.ToString();
+            return movie;
         }
 
 
 
+       
+       
 
 
-
-
-
-
-
-        public void bindgrid()
+        public void bindgrid(string movie)
         {
 
 
@@ -136,12 +100,21 @@ namespace examen
              // Open the Database Connection
              Conn.Open();
 
-             SqlDataAdapter Adapter = new SqlDataAdapter("Select * from book_Table", Conn);
 
 
-             Adapter.Fill(Bind, "MyDataBinding");
+
+               
+              SqlDataAdapter Adapter = new SqlDataAdapter($"Select Author, Title, Bruger from book_Table WHERE Title = '{movie}'", Conn);
+
+
+
          
-             dataGrid1.DataContext = Bind;
+
+            Adapter.Fill(Bind, "MyDataBinding");
+
+         
+
+            dataGrid1.DataContext = Bind;
             dataGrid1.Items.Refresh();
             // Close the Database Connection
             Conn.Close(); 
@@ -154,6 +127,28 @@ namespace examen
 
 
 
+        }
+
+        public DataSet Execute(string query)
+
+        {
+            try
+            {
+                DataSet resultSet = new DataSet();
+                using (SqlDataAdapter adapter = new SqlDataAdapter(new SqlCommand(query, new SqlConnection(connectionString))))
+                {
+
+                    // Open conn, execute query, close conn, wrap result in DataSet: 
+                    adapter.Fill(resultSet);
+                }
+
+                return resultSet;
+            }
+
+            catch (InvalidOperationException)
+            {
+                throw;
+            }
         }
 
         public void BindGrid_Loaded(object sender, RoutedEventArgs e)
@@ -202,6 +197,11 @@ namespace examen
 
                 dataGrid1.ItemsSource = null;
                 dataGrid1.ItemsSource = dt.DefaultView;  */
+
+
+
+
+
 
             }
 
